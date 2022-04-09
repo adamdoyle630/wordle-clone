@@ -1,4 +1,5 @@
-import java.util.List;
+import java.util.Collection;
+import java.util.Set;
 
 public class WordUtils {
 
@@ -9,7 +10,8 @@ public class WordUtils {
    * @param guessedWords - list of words that have already been guessed
    * @return validated input
    */
-  public static String readWord(String input, List<String> guessedWords, List<String> validWords) {
+  public static String readWord(
+      String input, Collection<String> guessedWords, Collection<String> validWords) {
     if (input == null) {
       System.out.println("Entry invalid - cannot be null");
       return null;
@@ -33,7 +35,7 @@ public class WordUtils {
    * @param guess - user's guess word
    * @param actual - correct word
    */
-  public static void checkWord(String guess, String actual) {
+  public static void checkWord(String guess, String actual, Set<Character> eliminatedLetters) {
     for (int i = 0; i < guess.length(); i++) {
       char currentChar = guess.charAt(i);
       if (currentChar == actual.charAt(i)) {
@@ -42,6 +44,7 @@ public class WordUtils {
         System.out.println(currentChar + " in word, but incorrect position");
       } else {
         System.out.println(currentChar + " not in word");
+        eliminatedLetters.add(currentChar);
       }
     }
   }

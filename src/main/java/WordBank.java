@@ -14,7 +14,7 @@ public class WordBank {
 
   private WordBank() {
     try {
-      String path = "files/wordbank.txt";
+      String path = "src/main/resources/wordbank.txt";
       Scanner fileReader = new Scanner(new File(path));
       while (fileReader.hasNext()) {
         words.add(fileReader.nextLine());
